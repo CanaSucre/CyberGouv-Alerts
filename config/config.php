@@ -14,6 +14,8 @@
       'DB_USER',
       'DB_PASS',
       'API_LINK',
+      'API_ALL_ALERTS',
+      'API_ALERTS_BY_ID',
   ])->notEmpty();
 
   $config = [
@@ -27,6 +29,8 @@
     ],
 
     'api_link' => $_ENV['API_LINK'],
+    'api_all_alerts' => $_ENV['API_ALL_ALERTS'],
+    'api_alerts_by_id' => $_ENV['API_ALERTS_BY_ID'],
     'env' => $_ENV['APP_ENV'],
   ];
 
