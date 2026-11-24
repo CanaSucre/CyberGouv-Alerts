@@ -51,4 +51,28 @@ function bddAlert_register($id) {
     }
 }
 
+
+
+/**
+ * Met à jour la date de révision de l'alerte dont l'identifiant a été fourni en paramètre.
+ * @param {string} $id Identifiant de l'alerte à mettre à jour
+ * @return {boolean} Renvoie false si l'action a échouée, true si elle a réussie.
+ */
+function bddAlert_updateReviewTimestamp($id) {
+    // Met à jour la date de révision de l'alerte dans la base de données en utilisant l'identifiant fourni.
+    // la BDD met automatiquement à jour la date de révision avec la date actuelle à chaque update de l'alerte.
+    try {
+        $pdo = getPDO();
+
+        $stmt = $pdo->prepare("UPDATE alert SET id = id WHERE id = :id");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+
+        return true;
+    } catch (Exception $e) {
+        // TODO : logger l'erreur
+        return false;
+    }
+} 
+
 ?>
