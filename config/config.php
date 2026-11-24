@@ -12,7 +12,8 @@
       'DB_PORT',
       'DB_NAME',
       'DB_USER',
-      'DB_PASS'
+      'DB_PASS',
+      'API_LINK',
   ])->notEmpty();
 
   $config = [
@@ -25,6 +26,7 @@
         'port' => $_ENV['DB_PORT']
     ],
 
+    'api_link' => $_ENV['API_LINK'],
     'env' => $_ENV['APP_ENV'],
   ];
 
