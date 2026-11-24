@@ -23,7 +23,11 @@ function getAlert($id) {
 function registerAlert($id) {
     $alertExistsInDb = bddAlert_findById($id);
 
-    if (!isset($alertExistsInDb)) {
+    // Cas où une erreur est survenue lors de la récupération de l'alerte en base de données
+    if ($alertExistsInDb === false) return false;
+
+    // Cas où l'alerte n'existe pas encore en base de données, on l'enregistre
+    if ($alertExistsInDb === null) {
         return bddAlert_register($id);
     } else {
         return bddAlert_updateReviewTimestamp($id);

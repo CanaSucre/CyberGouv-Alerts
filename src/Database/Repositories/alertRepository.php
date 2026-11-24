@@ -5,7 +5,7 @@ require_once __DIR__ . "/../connection.php";
 /**
  * Récupère les données de l'alerte dont l'identifiant a été fourni en paramètre.
  * @param {string} $id Identifiant de l'alerte a récupérer
- * @return {string|null} Renvoie un tableau avec les données sur l'alerte si elle est présente en base de données, null sinon.
+ * @return {string|null} Renvoie un tableau avec les données sur l'alerte si elle est présente en base de données, null si l'alerte n'est pas présente en BDD, false si l'action a échouée.
  */
 function bddAlert_findById($id) {
     try {
@@ -25,7 +25,7 @@ function bddAlert_findById($id) {
         }
     } catch(Exception $e) {
         // TODO : logger l'erreur
-        return null;
+        return false;
     }
 }
 
