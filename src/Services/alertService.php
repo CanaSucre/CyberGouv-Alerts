@@ -42,7 +42,6 @@ function registerAlert($id) {
  */
 function fetchAlerts() {
     $link = $_ENV['API_LINK'] . $_ENV['API_ALL_ALERTS'];
-    echo "Lien de l'API pour récupérer toutes les alertes : $link\n";
     $result = file_get_contents($link);
 
     $vars = json_decode($result, true);
