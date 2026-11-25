@@ -41,9 +41,9 @@ function registerAlert($id) {
  * @return array Un tableau contenant toutes les alertes.
  */
 function fetchAlerts() {
-    global $config;
-
-    $result = file_get_contents($config['api_link'] . $config['api_all_alerts']);
+    $link = $_ENV['API_LINK'] . $_ENV['API_ALL_ALERTS'];
+    echo "Lien de l'API pour récupérer toutes les alertes : $link\n";
+    $result = file_get_contents($link);
 
     $vars = json_decode($result, true);
     return $vars;
@@ -57,9 +57,8 @@ function fetchAlerts() {
  * @return array|null Les données de l'alerte sous forme de tableau associatif, ou null si l'alerte n'a pas été trouvée.
  */
 function fetchAlertById($id) {
-    global $config;
 
-    $link = $config['api_link'] . $config['api_alerts_by_id'];
+    $link = $_ENV['API_LINK'] . $_ENV['API_ALERTS_BY_ID'];
     $link = str_replace(':id', $id, $link);
 
     $result = file_get_contents($link);
