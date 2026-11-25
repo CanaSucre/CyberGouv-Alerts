@@ -7,14 +7,12 @@ require_once __DIR__ . '/../../config/config.php';
  * @return PDO
  */
 function getPDO() {
-  global $config;
-  
-  $driver = $config['db']['driver'];
-  $host = $config['db']['host'];
-  $dbname = $config['db']['name'];
-  $username = $config['db']['user'];
-  $password = $config['db']['password'];
-  $port = $config['db']['port'];
+  $driver = $_ENV['DB_DRIVER'];
+  $host = $_ENV['DB_HOST'];
+  $dbname = $_ENV['DB_NAME'];
+  $username = $_ENV['DB_USER'];
+  $password = $_ENV['DB_PASS'];
+  $port = $_ENV['DB_PORT'];
 
   $pdo = new PDO(
       "$driver:host=$host;port=$port;dbname=$dbname;charset=utf8mb4",
